@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: Woo Payment Reminder
- * Plugin URI: https://github.com/nobodyguy/woo-payment-reminder
- * Description: Automatically sends payment reminder emails after a configurable number of days.
- * Version: 1.0.0
+ * Plugin URI: https://github.com/annaglitch/woo-payment-reminder
+ * Description: Automatically sends payment reminder emails after a configurable number of days. Customized fork (QR payment for bank transfer, pay button for online payments).
+ * Version: 1.1.0
  * Author: Jan Gnip
  * Author URI: https://github.com/nobodyguy
  * Text Domain: woo-payment-reminder
@@ -29,6 +29,20 @@ function wpr_register_custom_email( $email_classes ) {
     return $email_classes;
 }
 add_filter( 'woocommerce_email_classes', 'wpr_register_custom_email' );
+
+// Allow sending the reminder manually from the order detail (Order actions)
+function wpr_add_order_action( $actions ) {
+    $actions['wpr_send_payment_reminder'] = __( 'Send payment reminder', 'woo-payment-reminder' );
+    return $actions;
+}
+add_filter( 'woocommerce_order_actions', 'wpr_add_order_action' );
+
+function wpr_process_order_action( $order ) {
+    WC()->mailer(); // Make sure the email class is loaded and hooked
+    do_action( 'send_payment_reminder_email', $order->get_id() );
+    $order->add_order_note( __( 'Payment reminder sent manually.', 'woo-payment-reminder' ) );
+}
+add_action( 'woocommerce_order_action_wpr_send_payment_reminder', 'wpr_process_order_action' );
 
 // Schedule cron job on activation
 function wpr_schedule_cron() {

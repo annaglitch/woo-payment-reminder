@@ -4,8 +4,8 @@ msgstr "Payment Reminder"
 msgid "Sends a reminder email for unpaid orders after a configurable number of days."
 msgstr "Sends a reminder email for unpaid orders after a configurable number of days."
 
-msgid "Reminder: Complete your payment for order #{order_id}"
-msgstr "Reminder: Complete your payment for order #{order_id}"
+msgid "Reminder: Complete your payment for order #{order_number}"
+msgstr "Reminder: Complete your payment for order #{order_number}"
 
 msgid "Enable/Disable"
 msgstr "Enable/Disable"
@@ -19,14 +19,14 @@ msgstr "Days before first reminder"
 msgid "Days before second reminder"
 msgstr "Days before second reminder"
 
-msgid "Hello %s,"
-msgstr "Hello %s,"
-
 msgid "We noticed that your order <strong>#%s</strong> is still awaiting payment."
 msgstr "We noticed that your order <strong>#%s</strong> is still awaiting payment."
 
 msgid "To complete your purchase, please proceed with the payment at your earliest convenience."
 msgstr "To complete your purchase, please proceed with the payment at your earliest convenience."
+
+msgid "You can pay by bank transfer to our account. The easiest way is to scan the QR code below in your banking app."
+msgstr "You can pay by bank transfer to our account. The easiest way is to scan the QR code below in your banking app."
 
 msgid "Pay Now"
 msgstr "Pay Now"
@@ -39,3 +39,15 @@ msgstr "If you have already completed the payment, please ignore this message."
 
 msgid "Thank you for shopping with us."
 msgstr "Thank you for shopping with us."
+
+msgid "Send payment reminder"
+msgstr "Send payment reminder"
+
+msgid "Payment reminder sent manually."
+msgstr "Payment reminder sent manually."
+
+msgid "Send payment reminder"
+msgstr "Send payment reminder"
+
+msgid "Payment reminder sent manually."
+msgstr "Payment reminder sent manually."

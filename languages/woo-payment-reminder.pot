@@ -12,7 +12,7 @@ msgstr ""
 msgid "Sends a reminder email for unpaid orders after a configurable number of days."
 msgstr ""
 
-msgid "Reminder: Complete your payment for order #{order_id}"
+msgid "Reminder: Complete your payment for order #{order_number}"
 msgstr ""
 
 msgid "Enable/Disable"
@@ -27,13 +27,13 @@ msgstr ""
 msgid "Days before second reminder"
 msgstr ""
 
-msgid "Hello %s,"
-msgstr ""
-
 msgid "We noticed that your order <strong>#%s</strong> is still awaiting payment."
 msgstr ""
 
 msgid "To complete your purchase, please proceed with the payment at your earliest convenience."
+msgstr ""
+
+msgid "You can pay by bank transfer to our account. The easiest way is to scan the QR code below in your banking app."
 msgstr ""
 
 msgid "Pay Now"
@@ -46,4 +46,16 @@ msgid "If you have already completed the payment, please ignore this message."
 msgstr ""
 
 msgid "Thank you for shopping with us."
+msgstr ""
+
+msgid "Send payment reminder"
+msgstr ""
+
+msgid "Payment reminder sent manually."
+msgstr ""
+
+msgid "Send payment reminder"
+msgstr ""
+
+msgid "Payment reminder sent manually."
 msgstr ""
