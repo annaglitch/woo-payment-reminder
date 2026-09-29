@@ -47,3 +47,15 @@ msgstr ""
 
 msgid "Thank you for shopping with us."
 msgstr ""
+
+msgid "Send payment reminder"
+msgstr ""
+
+msgid "Payment reminder sent manually."
+msgstr ""
+
+msgid "Send payment reminder"
+msgstr ""
+
+msgid "Payment reminder sent manually."
+msgstr ""

@@ -39,3 +39,15 @@ msgstr "If you have already completed the payment, please ignore this message."
 
 msgid "Thank you for shopping with us."
 msgstr "Thank you for shopping with us."
+
+msgid "Send payment reminder"
+msgstr "Send payment reminder"
+
+msgid "Payment reminder sent manually."
+msgstr "Payment reminder sent manually."
+
+msgid "Send payment reminder"
+msgstr "Send payment reminder"
+
+msgid "Payment reminder sent manually."
+msgstr "Payment reminder sent manually."

@@ -39,3 +39,9 @@ msgstr "Pokud jste již platbu provedli, tento e-mail ignorujte."
 
 msgid "Thank you for shopping with us."
 msgstr "Děkujeme za váš nákup."
+
+msgid "Send payment reminder"
+msgstr "Poslat připomínku platby"
+
+msgid "Payment reminder sent manually."
+msgstr "Připomínka platby odeslána ručně."

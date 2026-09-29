@@ -1,22 +1,29 @@
 <?php
+/**
+ * Připomínka platby – textová verze.
+ * Použije se jen tehdy, když je e-mail nastavený na formát "Prostý text".
+ * QR kód ani odkaz na fakturu se do textové verze nevkládají.
+ */
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
-?>
 
-<?php printf( __( 'Hello %s,', 'woo-payment-reminder' ), esc_html( $order->get_billing_first_name() ) ); ?>
+$bank_transfer_methods = array( 'bacs' );
 
-<?php printf( __( 'We noticed that your order #%s is still awaiting payment.', 'woo-payment-reminder' ), esc_html( $order->get_order_number() ) ); ?>
+$is_bank_transfer = in_array( $order->get_payment_method(), $bank_transfer_methods, true );
+$show_pay_link    = ! $is_bank_transfer && $order->needs_payment();
 
+if ( $order->get_billing_first_name() ) {
+    printf( esc_html__( 'Hi %s,', 'woocommerce' ), esc_html( $order->get_billing_first_name() ) );
+    echo "\n\n";
+}
 
-<?php _e( 'To complete your purchase, please proceed with the payment at your earliest convenience.', 'woo-payment-reminder' ); ?>
+echo 'vaše objednávka č. ' . esc_html( $order->get_order_number() ) . ' zatím čeká na zaplacení.' . "\n\n";
 
+if ( $show_pay_link ) {
+    echo 'Objednávku můžete zaplatit tady:' . "\n";
+    echo esc_url( $order->get_checkout_payment_url() ) . "\n\n";
+}
 
-<?php _e( 'Payment link:', 'woo-payment-reminder' ); ?>
-<?php echo esc_url( $order->get_checkout_payment_url() ); ?>
-
-
-<?php _e( 'If you have already completed the payment, please ignore this message.', 'woo-payment-reminder' ); ?>
-
-
-<?php _e( 'Thank you for shopping with us.', 'woo-payment-reminder' ); ?>
+echo 'Pokud jste už zaplatili, tento e-mail prosím ignorujte. Platba se k nám mohla jen ještě nedostat.' . "\n\n";
+echo 'Děkujeme za váš nákup.' . "\n";
