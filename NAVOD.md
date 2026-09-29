@@ -7,10 +7,11 @@ Co je jinak než v originálu:
 
 - **Bankovní převod** → v e-mailu je QR platba z WPify Woo a odkaz na zálohovou fakturu
   z Fakturoidu. Tlačítko „Zaplatit“ tam není.
-- **Karta / Apple Pay** → tlačítko „Zaplatit objednávku“.
+- **Karta / Apple Pay** → tlačítko „Zaplatit nyní“.
 - **Zaplacená objednávka** → ani QR, ani tlačítko.
 - **Oslovení** v 5. pádě přes WPify Woo („Dobrý den, Petře,“).
-- Texty e-mailu jsou rovnou česky (`templates/emails/`).
+- Český překlad je tvůj z Loco Translate („Přejeme vám usměvavý den!“ atd.),
+  doplněný o nové texty (`languages/woo-payment-reminder-cs_CZ.po`).
 - V detailu objednávky přibyla akce **Poslat připomínku platby** (ruční odeslání).
 
 > **Pozor při aktualizaci:** plugin instaluj vždy z tohoto repozitáře
@@ -50,7 +51,19 @@ než `bacs`, napiš mi to a upravím řádek v obou šablonách:
 $bank_transfer_methods = array( 'bacs' );
 ```
 
-Všechny ostatní metody (karta, Apple Pay…) dostanou tlačítko „Zaplatit objednávku“.
+Všechny ostatní metody (karta, Apple Pay…) dostanou tlačítko „Zaplatit nyní“.
+
+## Úprava textů
+
+Texty se dají dál měnit v **Loco Translate** (Pluginy → Woo Payment Reminder →
+čeština). Při ukládání v Loco zvol umístění **Vlastní** (`languages/loco/plugins/`),
+ne „Autor“ – jinak ho další nahrání pluginu přepíše (to se nejspíš stalo minule).
+Změny mi pak klidně pošli a přidám je i sem do repozitáře.
+
+Oslovení („Dobrý den, Petře,“) se v Loco u tohoto pluginu **nemění**, dělá ho
+WPify Woo. Kdybys chtěla „Krásný den, Petře,“, nastav ve **WPify Woo → Pátý pád
+v e-mailech → Nahradit jméno** text `Krásný den, {first_name},`. Pozor: změní to
+oslovení ve všech e-mailech WooCommerce, ne jen v připomínce.
 
 ## 4. Test
 
@@ -61,7 +74,7 @@ fakturační e-mail zákazníka. Odeslání: detail objednávky → vpravo
 | Objednávka | Očekávaný výsledek |
 | --- | --- |
 | Převodem, jméno „Petr“, proforma už vystavená | „Dobrý den, Petře,“ + QR + odkaz na zálohovou fakturu, **žádné tlačítko** |
-| Kartou, nezaplacená | tlačítko „Zaplatit objednávku“, **žádné QR** |
+| Kartou, nezaplacená | tlačítko „Zaplatit nyní“, **žádné QR** |
 | Zaplacená (Zpracovává se / Dokončeno) | ani QR, ani tlačítko |
 
 Nakonec zkontroluj e-mail v Gmailu (obrázek QR) a na mobilu, a že odkaz na

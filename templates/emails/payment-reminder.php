@@ -1,8 +1,9 @@
 <?php
 /**
- * Připomínka platby – HTML verze.
+ * Payment reminder – HTML version.
  *
- * Šablonu jde přepsat v šabloně webu: <theme>/woocommerce/emails/payment-reminder.php
+ * Texts are translated in languages/woo-payment-reminder-cs_CZ.po (or via Loco Translate).
+ * Can be overridden in the theme: <theme>/woocommerce/emails/payment-reminder.php
  */
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
@@ -37,14 +38,19 @@ if ( $order->get_billing_first_name() ) : ?>
 <?php endif; ?>
 
 <p>
-    vaše objednávka <strong>č. <?php echo esc_html( $order->get_order_number() ); ?></strong>
-    na <?php echo wp_kses_post( wc_price( $order->get_total(), array( 'currency' => $order->get_currency() ) ) ); ?>
-    zatím čeká na zaplacení.
+    <?php printf(
+        __( 'We noticed that your order <strong>#%s</strong> is still awaiting payment.', 'woo-payment-reminder' ),
+        esc_html( $order->get_order_number() )
+    ); ?>
 </p>
+
+<?php if ( $show_qr || $show_pay_button ) : ?>
+<p><?php _e( 'To complete your purchase, please proceed with the payment at your earliest convenience.', 'woo-payment-reminder' ); ?></p>
+<?php endif; ?>
 
 <?php if ( $show_qr ) : ?>
 
-    <p>Platbu můžete poslat převodem na náš účet. Nejjednodušší je naskenovat QR kód níže v aplikaci své banky, údaje se vyplní samy.</p>
+    <p><?php _e( 'You can pay by bank transfer to our account. The easiest way is to scan the QR code below in your banking app.', 'woo-payment-reminder' ); ?></p>
 
     <?php do_action( 'wpify_woo_render_qr_code', $order ); ?>
 
@@ -52,19 +58,17 @@ if ( $order->get_billing_first_name() ) : ?>
 
 <?php elseif ( $show_pay_button ) : ?>
 
-    <p>Objednávku můžete dokončit jedním kliknutím, kartou nebo přes Apple Pay.</p>
-
     <p>
         <a href="<?php echo esc_url( $order->get_checkout_payment_url() ); ?>"
            style="display: inline-block; background-color: #0071a1; color: #ffffff; padding: 10px 15px; text-decoration: none; font-weight: bold;">
-            Zaplatit objednávku
+            <?php _e( 'Pay Now', 'woo-payment-reminder' ); ?>
         </a>
     </p>
 
 <?php endif; ?>
 
-<p>Pokud jste už zaplatili, tento e-mail prosím ignorujte. Platba se k nám mohla jen ještě nedostat.</p>
+<p><?php _e( 'If you have already completed the payment, please ignore this message.', 'woo-payment-reminder' ); ?></p>
 
-<p>Děkujeme za váš nákup.</p>
+<p><?php _e( 'Thank you for shopping with us.', 'woo-payment-reminder' ); ?></p>
 
 <?php do_action( 'woocommerce_email_footer', $email ); ?>

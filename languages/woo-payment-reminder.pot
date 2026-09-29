@@ -27,13 +27,13 @@ msgstr ""
 msgid "Days before second reminder"
 msgstr ""
 
-msgid "Hello %s,"
-msgstr ""
-
 msgid "We noticed that your order <strong>#%s</strong> is still awaiting payment."
 msgstr ""
 
 msgid "To complete your purchase, please proceed with the payment at your earliest convenience."
+msgstr ""
+
+msgid "You can pay by bank transfer to our account. The easiest way is to scan the QR code below in your banking app."
 msgstr ""
 
 msgid "Pay Now"
